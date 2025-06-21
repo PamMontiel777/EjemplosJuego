@@ -1,17 +1,25 @@
-# EjemplosJuego
+# 🐱 Gato Runner - Juego de Plataformas 2D
 
-El proyecto esta desarrollado sobre MinGW64 utilizando Msys2
-y como editor se esta utilizando Visual Studio Code
+Un emocionante juego de plataformas 2D donde controlas a un gato que debe esquivar obstáculos. Desarrollado usando SFML (Simple and Fast Multimedia Library) en C++.
 
-## Como ejecutar los ejemplos
+## 🎮 Características Principales
+
+- ✅ Control sencillo: Salta con la tecla **↑** y cae rápido con **↓**
+- ✅ Sistema de puntuación basado en tiempo de supervivencia
+- ✅ Pantalla de Game Over con opción de reinicio (presiona Enter)
+- ✅ Música de fondo y efectos visuales atractivos
+- ✅ Dificultad progresiva (los obstáculos aparecen más rápido con el tiempo)
+
+
+## Como ejecutar
 
 Instalar todas las dependencias descritas abajo y dentro de una terminal de vscode ejecutar:
 
 > make run'NombreEjecutable'
 
-Por ejemplo para ejecutar '00_Ventana.cpp' correr el comando en la terminal de vscode:
+Por ejemplo para ejecutar 'juego.cpp' correr el comando en la terminal de vscode:
 
-> make run00_Ventana
+> make runjuego
 
 
 ## Programas necesarios

@@ -1,0 +1,97 @@
+@startuml diagrama
+
+class Personaje {
+  - sprite: sf.Sprite
+  - texture: sf.Texture
+  - currentFrame: int
+  - numFrames: int
+  - frameWidth: int
+  - frameHeight: int
+  - xOffset: int
+  - yOffset: int
+  - frameTime: float
+  - animationTime: float
+  - isJumping: bool
+  - groundLevel: float
+  - jumpHeight: float
+  - jumpSpeed: float
+  - gravity: float
+  - fastFallGravity: float
+  
+  + Personaje()
+  + reset()
+  + update(deltaTime: float, fastFall: bool)
+  + jump()
+  + draw(window: sf.RenderWindow)
+  + getBounds(): sf.FloatRect
+}
+
+class Obstaculo {
+  - sprite: sf.Sprite
+  - texture: sf.Texture
+  - tipo: Tipo
+  - velocidad: float
+  
+  + Obstaculo(tipo: Tipo, velocidad: float)
+  + update(deltaTime: float)
+  + draw(window: sf.RenderWindow)
+  + isOutOfScreen(): bool
+  + getBounds(): sf.FloatRect
+  + getTipo(): Tipo
+}
+
+class Juego {
+  - window: sf.RenderWindow
+  - fondoTexture: sf.Texture
+  - fondoSprite: sf.Sprite
+  - font: sf.Font
+  - music: sf.Music
+  - personaje: Personaje
+  - obstaculos: Obstaculo*
+  - velocidadJuego: float
+  - tiempoSiguienteObstaculo: float
+  - gameOver: bool
+  - scoreTime: float
+  - score: int
+  
+  + Juego()
+  + run()
+  - resetGame()
+  - procesarEventos()
+  - actualizar(deltaTime: float)
+  - renderizar()
+}
+
+class "sf.Sprite" {
+  + setTexture(texture: sf.Texture)
+  + setPosition(x: float, y: float)
+  + move(offsetX: float, offsetY: float)
+  + getGlobalBounds(): sf.FloatRect
+}
+
+class "sf.Texture" {
+  + loadFromFile(filename: String): bool
+  + setSmooth(smooth: bool)
+}
+
+class "sf.RenderWindow" {
+  + clear()
+  + draw(drawable: sf.Drawable)
+  + display()
+  + pollEvent(event: sf.Event): bool
+  + isOpen(): bool
+  + close()
+}
+
+Personaje "1" *-- "1" "sf.Sprite"
+Personaje "1" *-- "1" "sf.Texture"
+Obstaculo "1" *-- "1" "sf.Sprite"
+Obstaculo "1" *-- "1" "sf.Texture"
+Juego "1" *-- "1" Personaje
+Juego "1" o-- "*" Obstaculo
+Juego "1" *-- "1" "sf.RenderWindow"
+Juego "1" *-- "1" "sf.Texture"
+Juego "1" *-- "1" "sf.Font"
+Juego "1" *-- "1" "sf.Music"
+
+@enduml

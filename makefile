@@ -17,7 +17,7 @@ $(BIN_DIR)/%.exe: $(SRC_DIR)/%.cpp
 # Regla por defecto para compilar todos los archivos .cpp
 all: $(EXE_FILES)
 
-# Regla para ejecutar cada archivo .exe
+# Regla para ejecutar un archivo específico (ejemplo: make runjuego)
 run%: $(BIN_DIR)/%.exe
 	./$<
 
@@ -26,4 +26,3 @@ clean:
 	rm -f $(EXE_FILES)
 
 .PHONY: all clean
-.PHONY: run-%
